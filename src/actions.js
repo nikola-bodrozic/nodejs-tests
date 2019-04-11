@@ -15,7 +15,8 @@ const handlePromise = (p = Math.random()) => {
 };
 
 const showUser = (p) => {
-    console.log(userDao.getUserLocation(p))
+    //console.log(userDao.getUserLocation(p))
+    return userDao.getUserLocation(p)
 }
 
 module.exports = {
