@@ -52,4 +52,8 @@ lab.experiment("Promises", () => {
   lab.test("should reject promise to `rejected` string", async () => {
     expect(await actions.handlePromise(0.3)).to.be.equal("rejected");
   });
+  lab.test.only("should reject promise to `rejected` string", async () => {
+    let pureJson = await actions.cv();
+    expect(pureJson.word).to.be.string();
+  });
 });
