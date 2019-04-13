@@ -45,15 +45,24 @@ lab.experiment("Class Users", () => {
 });
 
 // testing promises
-lab.experiment("Promises", () => {
+lab.experiment("Promises with reject and resolve", () => {
   lab.test("should resolve promise to `resolved` string", async () => {
     expect(await actions.handlePromise(0.7)).to.be.equal("resolved");
   });
   lab.test("should reject promise to `rejected` string", async () => {
     expect(await actions.handlePromise(0.3)).to.be.equal("rejected");
   });
-  lab.test.only("should reject promise to `rejected` string", async () => {
-    let pureJson = await actions.cv();
-    expect(pureJson.word).to.be.string();
+  // testing fetch and axios
+  lab.experiment("Promises from fetch and axios", () => {
+    lab.test("should test using fetch", async () => {
+      let pureJson = await actions.cvFetch();
+      console.log(pureJson);
+      expect(pureJson.word).to.be.string();
+    });
+    lab.test("should test using axios", async () => {
+      let pureArr = await actions.cvAxios();
+      console.log(pureArr);
+      expect(pureArr).to.be.an.array();
+    });
   });
 });
